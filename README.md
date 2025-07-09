@@ -42,11 +42,9 @@ cd lanceCodeKit
 cp .env.example .env
 # Edit .env to add your API keys
 chmod +x setup.sh
-
+```
 ### Option 2: Docker Setup
-bash
-Copy
-Edit
+
 git clone https://github.com/lance0/lanceCodeKit.git
 cd lanceCodeKit
 cp .env.example .env
@@ -114,9 +112,7 @@ Check .env for valid key
 
 Use verbose CLI:
 
-bash
-Copy
-Edit
+
 VERBOSE=true claude mcp add ...
 Context7 Issues
 Make sure Node ≥ 18 is installed
