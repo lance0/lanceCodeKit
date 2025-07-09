@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  gemini:
+    image: node:18
+    command: npx -y github:RLabs-Inc/gemini-mcp
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+    ports:
+      - "3000:3000"
+  context7:
+    image: node:18
+    command: npx -y @upstash/context7-mcp@latest
+    environment:
+      SMITHERY_KEY: ${SMITHERY_KEY}
+    ports:
+      - "3001:3001"
