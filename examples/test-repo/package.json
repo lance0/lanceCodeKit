@@ -1,0 +1,9 @@
+{
+  "name": "test-repo",
+  "version": "1.0.0",
+  "description": "A simple test repo for lanceCodeKit",
+  "main": "hello.js",
+  "scripts": {
+    "start": "node hello.js"
+  }
+}
