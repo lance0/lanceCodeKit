@@ -1,8 +1,8 @@
-# LanceCodeKit
+# LanceCodeKit 🚀
 
-LanceCodeKit helps developers integrate Google Gemini and Context7 as Model Context Protocol (MCP) servers for Claude Code. The project offers automated setup scripts, Docker support, and custom Claude commands so you can start querying both services quickly and securely.
+LanceCodeKit helps developers integrate Google Gemini and Context7 as Model Context Protocol (MCP) servers for Claude Code. The project offers automated setup scripts, Docker support, and custom Claude commands so you can start querying both services quickly and securely. ✨
 
-## Features
+## ✨ Features
 
 - Automated installation script (`setup.sh`)
 - Docker configuration with `docker-compose.yml`
@@ -11,7 +11,7 @@ LanceCodeKit helps developers integrate Google Gemini and Context7 as Model Cont
 - Example environment file for safe sharing
 - MIT licensed
 
-## Prerequisites
+## 🛠️ Prerequisites
 
 - Node.js 18 or later
 - Optionally Python 3.8+
@@ -20,7 +20,21 @@ LanceCodeKit helps developers integrate Google Gemini and Context7 as Model Cont
 - Optional: Smithery key for Context7
 - Docker (for container usage)
 
-## Setup
+## 🔑 Getting API Keys
+
+**Gemini**
+
+1. Visit [Google AI Studio](https://aistudio.google.com/).
+2. Create a new API key from the **API Keys** tab.
+3. Add it to `.env` as `GEMINI_API_KEY=<your key>`.
+
+**Context7** *(optional)*
+
+1. Sign up at [smithery.ai](https://smithery.ai/).
+2. Generate a key under **API Keys**.
+3. Add it to `.env` as `SMITHERY_KEY=<your key>`.
+
+## 🚀 Setup
 
 ### Local
 
@@ -51,7 +65,7 @@ docker-compose up -d
 
 Both services will be available on ports **3000** (Gemini) and **3001** (Context7).
 
-## Using with Claude
+## 📦 Using with Claude
 
 - `claude mcp list` – verify that `gemini` and `context7` are registered
 - Use slash commands such as `/gemini-query` and `/context7`
@@ -59,17 +73,17 @@ Both services will be available on ports **3000** (Gemini) and **3001** (Context
 
 See `CLAUDE.md` for command examples.
 
-## Troubleshooting
+## 🐛 Troubleshooting
 
 - Ensure API keys are correct in `.env`
 - Check Docker containers with `docker-compose logs`
 - Run the setup script with `bash -x setup.sh` for verbose output
 
-## License
+## 📜 License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-## Publishing
+## 📢 Publishing
 
 To publish your own fork:
 
