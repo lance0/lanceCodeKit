@@ -1,129 +1,83 @@
-# LanceCodeKit: Gemini + Context7 MCP Integration for Claude Code
+# LanceCodeKit
 
-**LanceCodeKit** simplifies the setup of [Google Gemini](https://aistudio.google.com/) and [Context7](https://smithery.ai/) as Model Context Protocol (MCP) servers for use with Claude Code. It supports local and Docker-based installations and includes custom command templates, making it easy for teams or solo devs to boost productivity with multi-agent AI workflows.
+LanceCodeKit helps developers integrate Google Gemini and Context7 as Model Context Protocol (MCP) servers for Claude Code. The project offers automated setup scripts, Docker support, and custom Claude commands so you can start querying both services quickly and securely.
 
----
+## Features
 
-## 🔧 Features
+- Automated installation script (`setup.sh`)
+- Docker configuration with `docker-compose.yml`
+- Ready to use MCP configuration (`mcp.json`)
+- Custom Claude commands in `CLAUDE.md`
+- Example environment file for safe sharing
+- MIT licensed
 
-- **Automated Setup** with `setup.sh` for local environments
-- **Docker Support** via `docker-compose.yml` for portable deployment
-- **Preconfigured MCP** file for Claude integration
-- **Custom Claude Commands** in `CLAUDE.md`
-- **Clean `.env` template** for secure configuration
-- **MIT Licensed** and easy to share
+## Prerequisites
 
----
+- Node.js 18 or later
+- Optionally Python 3.8+
+- Claude CLI or Desktop installed
+- Gemini API key from Google AI Studio
+- Optional: Smithery key for Context7
+- Docker (for container usage)
 
-## 📦 Prerequisites
+## Setup
 
-### System Requirements
-- Linux, macOS, or Windows (WSL2)
-- Node.js ≥ 18.0.0
-- Python ≥ 3.8 (optional)
-- Docker (optional)
-
-### Tools Required
-- Git
-- Claude CLI or Claude Desktop
-- Gemini API key ([Google AI Studio](https://aistudio.google.com/))
-- Optional: Smithery.ai key for Context7
-- Optional: MCP Inspector for debugging
-
----
-
-## 🚀 Quick Start
-
-### Option 1: Local Setup
+### Local
 
 ```bash
-git clone https://github.com/lance0/lanceCodeKit.git
+# Clone the repo
+git clone https://github.com/your-user/lanceCodeKit.git
 cd lanceCodeKit
-cp .env.example .env
-# Edit .env to add your API keys
-chmod +x setup.sh
-```
-### Option 2: Docker Setup
 
-git clone https://github.com/lance0/lanceCodeKit.git
+# Copy and edit environment variables
+cp .env.example .env
+# add your GEMINI_API_KEY and optional SMITHERY_KEY
+
+# Run the setup
+chmod +x setup.sh
+./setup.sh
+```
+
+### Docker
+
+```bash
+git clone https://github.com/your-user/lanceCodeKit.git
 cd lanceCodeKit
 cp .env.example .env
 # Edit .env with your API keys
+
 docker-compose up -d
-claude mcp list
-🛠 Manual Configuration (Advanced)
-Update your Claude config at ~/.claude/mcp.json:
+```
 
-json
-Copy
-Edit
-{
-  "mcpServers": {
-    "gemini": {
-      "command": "node",
-      "args": ["dist/gemini_mcp_server.js"],
-      "env": {
-        "GEMINI_API_KEY": "your_api_key_here"
-      }
-    },
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
-    }
-  }
-}
-Or use CLI commands:
+Both services will be available on ports **3000** (Gemini) and **3001** (Context7).
 
-bash
-Copy
-Edit
-claude mcp add gemini -s user --env GEMINI_API_KEY=your-gemini-api-key npx -y https://github.com/RLabs-Inc/gemini-mcp.git
-claude mcp add --transport http context7 https://mcp.context7.com/mcp
-🧠 Example Usage
-bash
-Copy
-Edit
-/gemini-query What is quantum computing?
-/context7 What’s the latest way to use redis-py?
-Check out CLAUDE.md for more custom commands like:
+## Using with Claude
 
-/project:analyze – Review code with Gemini + Context7
+- `claude mcp list` – verify that `gemini` and `context7` are registered
+- Use slash commands such as `/gemini-query` and `/context7`
+- Advanced users can modify `mcp.json` and load it manually
 
-/project:docs [library] – Fetch up-to-date docs via Context7
+See `CLAUDE.md` for command examples.
 
-/project:brainstorm – Generate new ideas with Gemini
+## Troubleshooting
 
-🧪 Workflow Example
-text
-Copy
-Edit
-@gemini Optimize this Python function for Redis operations. use context7
-Flow:
+- Ensure API keys are correct in `.env`
+- Check Docker containers with `docker-compose logs`
+- Run the setup script with `bash -x setup.sh` for verbose output
 
-Context7 pulls Redis docs
+## License
 
-Gemini reviews your code
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-Claude suggests and applies improvements
+## Publishing
 
-🧯 Troubleshooting
-Gemini Issues
-Check .env for valid key
+To publish your own fork:
 
-Use verbose CLI:
-
-
-VERBOSE=true claude mcp add ...
-Context7 Issues
-Make sure Node ≥ 18 is installed
-
-Double-check Smithery key and library IDs
-
-🤝 Contributing
-PRs welcome! Open issues or reach out to Lance with improvements, ideas, or bugs.
-
-
-./setup.sh
-claude mcp list  # Should show gemini and context7
-
-
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+# Create a GitHub repo named lanceCodeKit then run:
+git remote add origin git@github.com:your-user/lanceCodeKit.git
+git push -u origin main
+```

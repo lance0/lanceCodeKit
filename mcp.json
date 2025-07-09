@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "gemini": {
+      "command": "npx",
+      "args": ["-y", "github:RLabs-Inc/gemini-mcp"],
+      "env": {
+        "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+      },
+      "port": 3000
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "env": {
+        "SMITHERY_KEY": "${SMITHERY_KEY}"
+      },
+      "transport": "http",
+      "port": 3001
+    }
+  }
+}
