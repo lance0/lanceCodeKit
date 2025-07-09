@@ -2,6 +2,9 @@
 
 Use these commands in Claude Code to interact with Gemini and Context7 MCP servers.
 
+To install the servers run `./setup.sh` or register them manually with
+`claude mcp add` as described in the README.
+
 ## Commands
 
 - `/gemini-query <text>` – Send a query to the Gemini MCP server.

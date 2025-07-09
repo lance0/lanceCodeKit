@@ -65,6 +65,20 @@ docker-compose up -d
 
 Both services will be available on ports **3000** (Gemini) and **3001** (Context7).
 
+### Manual Claude setup
+
+If you prefer not to run `setup.sh`, you can register the MCP servers manually:
+
+```bash
+# Gemini MCP
+claude mcp add gemini --env GEMINI_API_KEY="<your key>" npx -y github:RLabs-Inc/gemini-mcp
+
+# Context7 MCP
+claude mcp add --transport http context7 https://mcp.context7.com/mcp
+```
+
+Verify they are registered with `claude mcp list`.
+
 ## 📦 Using with Claude
 
 - `claude mcp list` – verify that `gemini` and `context7` are registered
@@ -72,6 +86,18 @@ Both services will be available on ports **3000** (Gemini) and **3001** (Context
 - Advanced users can modify `mcp.json` and load it manually
 
 See `CLAUDE.md` for command examples.
+
+### Example project
+
+An example repo is included in `examples/test-repo`. You can open that
+directory in Claude to test the slash commands:
+
+```bash
+cd examples/test-repo
+claude mcp list
+```
+
+Try `/gemini-query` or `/context7` from within the repo to experiment.
 
 ## 🐛 Troubleshooting
 
